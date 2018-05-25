@@ -16,7 +16,7 @@ app = Flask(__name__)
 def webhook():
   #when a post is received, excecute the following
   data = request.get_json()
-  log('Recieved {}'.format(data))
+  log('Recieved3 {}'.format(data))
   # Don't reply to own messages or other bots
   if data['sender_type'] != 'bot' and random.randint(0,100)<15: #30% chance of replying
     inputString = data['text'] #Reads in message from GroupMe payload as a string
