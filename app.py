@@ -16,14 +16,11 @@ app = Flask(__name__)
 def webhook():
   #when a post is received, excecute the following
   data = request.get_json()
-  log('Recieved3 {}'.format(data))
+  log('Recieved {}'.format(data))
   # Don't reply to own messages or other bots
-  if data['sender_type'] != 'bot' and random.randint(0,100)<15: #30% chance of replying
+  if data['sender_type'] != 'bot' 
     inputString = data['text'] #Reads in message from GroupMe payload as a string
     words = inputString.lower().split(" ")
-    if "bees" in words and random.randint(0,1000)<1:
-        send_message(script)
-        return
     #make it all lowercase and split into individual words
     puns = csv.reader(open('puns.csv'), delimiter = '\n')
     #read in CSV file of puns
@@ -55,7 +52,7 @@ def webhook():
   return "ok", 200
 
 def send_message(msg):
-  time.sleep(random.randint(0,5))
+  #time.sleep(random.randint(0,5))
   #have a delay so that it seems like the bot is thinking and doesn't respond too fast
   url  = 'https://api.groupme.com/v3/bots/post' #destination
 
